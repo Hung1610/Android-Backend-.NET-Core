@@ -48,6 +48,13 @@ namespace RestaurantAPI.Models
 
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
             });
+            // Data Seeding
+            modelBuilder.Entity<Foods>().HasData(
+                new Foods() { Id = 1, Name = "Canh cá", Price = 7000, Image = "image/canhca.jpg" },
+                new Foods() { Id = 2, Name = "Cơm trắng", Price = 5000, Image = "image/comtrang.jpg" },
+                new Foods() { Id = 3, Name = "Cơm chiên", Price = 10000, Image = "image/comchien.jpg" },
+                new Foods() { Id = 4, Name = "Canh thịt bò", Price = 15000, Image = "image/canhthitbo.jpg" }
+            );
         }
     }
 }
