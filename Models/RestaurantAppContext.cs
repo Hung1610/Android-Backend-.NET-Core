@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using RestaurantAPI.Helpers;
+using RestaurantAPI.Models;
 
 namespace RestaurantAPI.Models
 {
@@ -38,6 +39,9 @@ namespace RestaurantAPI.Models
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
+            modelBuilder.Entity<Orders>()
+                .HasKey(c => new { c.BillId, c.FoodId });
+
             modelBuilder.Entity<Foods>(entity =>
             {
                 entity.Property(e => e.Id);
@@ -48,13 +52,14 @@ namespace RestaurantAPI.Models
 
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
             });
-            // Data Seeding
-            modelBuilder.Entity<Foods>().HasData(
-                new Foods() { Id = 1, Name = "Canh cá", Price = 7000, Image = "image/canhca.jpg" },
-                new Foods() { Id = 2, Name = "Cơm trắng", Price = 5000, Image = "image/comtrang.jpg" },
-                new Foods() { Id = 3, Name = "Cơm chiên", Price = 10000, Image = "image/comchien.jpg" },
-                new Foods() { Id = 4, Name = "Canh thịt bò", Price = 15000, Image = "image/canhthitbo.jpg" }
-            );
         }
+
+        public DbSet<RestaurantAPI.Models.Bills> Bills { get; set; }
+
+        public DbSet<RestaurantAPI.Models.Orders> Orders { get; set; }
+
+        public DbSet<RestaurantAPI.Models.Tables> Tables { get; set; }
+
+        public DbSet<RestaurantAPI.Models.Users> Users { get; set; }
     }
 }

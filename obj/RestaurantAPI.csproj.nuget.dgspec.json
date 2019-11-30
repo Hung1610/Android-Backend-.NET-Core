@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Blindfold Gang\\Desktop\\Social\\RestaurentAndroidApp-Backend-.NET-Core-master\\RestaurantAPI.csproj": {}
+    "E:\\RestaurentAndroidApp-Backend-.NET-Core\\RestaurantAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Blindfold Gang\\Desktop\\Social\\RestaurentAndroidApp-Backend-.NET-Core-master\\RestaurantAPI.csproj": {
+    "E:\\RestaurentAndroidApp-Backend-.NET-Core\\RestaurantAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Blindfold Gang\\Desktop\\Social\\RestaurentAndroidApp-Backend-.NET-Core-master\\RestaurantAPI.csproj",
+        "projectUniqueName": "E:\\RestaurentAndroidApp-Backend-.NET-Core\\RestaurantAPI.csproj",
         "projectName": "RestaurantAPI",
-        "projectPath": "C:\\Users\\Blindfold Gang\\Desktop\\Social\\RestaurentAndroidApp-Backend-.NET-Core-master\\RestaurantAPI.csproj",
-        "packagesPath": "C:\\Users\\Blindfold Gang\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Blindfold Gang\\Desktop\\Social\\RestaurentAndroidApp-Backend-.NET-Core-master\\obj\\",
+        "projectPath": "E:\\RestaurentAndroidApp-Backend-.NET-Core\\RestaurantAPI.csproj",
+        "packagesPath": "C:\\Users\\phuoc\\.nuget\\packages\\",
+        "outputPath": "E:\\RestaurentAndroidApp-Backend-.NET-Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Blindfold Gang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\phuoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,16 +82,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

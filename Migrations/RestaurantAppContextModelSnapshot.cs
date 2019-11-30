@@ -19,6 +19,29 @@ namespace RestaurantAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("RestaurantAPI.Models.Bills", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreateTime");
+
+                    b.Property<int?>("CreatorId");
+
+                    b.Property<int?>("Flag");
+
+                    b.Property<long>("TableId");
+
+                    b.Property<long?>("TotalPayment");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TableId");
+
+                    b.ToTable("Bills");
+                });
+
             modelBuilder.Entity("RestaurantAPI.Models.Foods", b =>
                 {
                     b.Property<long>("Id")
@@ -37,36 +60,76 @@ namespace RestaurantAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Foods");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Image = "image/canhca.jpg",
-                            Name = "Canh cá",
-                            Price = 7000m
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Image = "image/comtrang.jpg",
-                            Name = "Cơm trắng",
-                            Price = 5000m
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Image = "image/comchien.jpg",
-                            Name = "Cơm chiên",
-                            Price = 10000m
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Image = "image/canhthitbo.jpg",
-                            Name = "Canh thịt bò",
-                            Price = 15000m
-                        });
+            modelBuilder.Entity("RestaurantAPI.Models.Orders", b =>
+                {
+                    b.Property<long>("BillId");
+
+                    b.Property<long>("FoodId");
+
+                    b.Property<int?>("Flag");
+
+                    b.Property<long?>("PaymentAmount");
+
+                    b.Property<int?>("Quantity");
+
+                    b.HasKey("BillId", "FoodId");
+
+                    b.HasIndex("FoodId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("RestaurantAPI.Models.Tables", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Flag");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tables");
+                });
+
+            modelBuilder.Entity("RestaurantAPI.Models.Users", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RestaurantAPI.Models.Bills", b =>
+                {
+                    b.HasOne("RestaurantAPI.Models.Tables", "Table")
+                        .WithMany()
+                        .HasForeignKey("TableId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("RestaurantAPI.Models.Orders", b =>
+                {
+                    b.HasOne("RestaurantAPI.Models.Bills", "Bill")
+                        .WithMany()
+                        .HasForeignKey("BillId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RestaurantAPI.Models.Foods", "Food")
+                        .WithMany()
+                        .HasForeignKey("FoodId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

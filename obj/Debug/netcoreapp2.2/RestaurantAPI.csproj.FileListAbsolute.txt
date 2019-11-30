@@ -28,3 +28,17 @@ C:\Users\Blindfold Gang\Desktop\Social\RestaurentAndroidApp-Backend-.NET-Core-ma
 C:\Users\Blindfold Gang\Desktop\Social\RestaurentAndroidApp-Backend-.NET-Core-master\obj\Debug\netcoreapp2.2\RestaurantAPI.RazorTargetAssemblyInfo.cache
 C:\Users\Blindfold Gang\Desktop\Social\RestaurentAndroidApp-Backend-.NET-Core-master\obj\Debug\netcoreapp2.2\RestaurantAPI.dll
 C:\Users\Blindfold Gang\Desktop\Social\RestaurentAndroidApp-Backend-.NET-Core-master\obj\Debug\netcoreapp2.2\RestaurantAPI.pdb
+E:\RestaurentAndroidApp-Backend-.NET-Core\bin\Debug\netcoreapp2.2\RestaurantAPI.deps.json
+E:\RestaurentAndroidApp-Backend-.NET-Core\bin\Debug\netcoreapp2.2\RestaurantAPI.runtimeconfig.json
+E:\RestaurentAndroidApp-Backend-.NET-Core\bin\Debug\netcoreapp2.2\RestaurantAPI.runtimeconfig.dev.json
+E:\RestaurentAndroidApp-Backend-.NET-Core\bin\Debug\netcoreapp2.2\RestaurantAPI.dll
+E:\RestaurentAndroidApp-Backend-.NET-Core\bin\Debug\netcoreapp2.2\RestaurantAPI.pdb
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.csprojAssemblyReference.cache
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.csproj.CoreCompileInputs.cache
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.RazorAssemblyInfo.cache
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.RazorAssemblyInfo.cs
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.AssemblyInfoInputs.cache
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.AssemblyInfo.cs
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.RazorTargetAssemblyInfo.cache
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.dll
+E:\RestaurentAndroidApp-Backend-.NET-Core\obj\Debug\netcoreapp2.2\RestaurantAPI.pdb
