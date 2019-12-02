@@ -13,6 +13,5 @@ namespace RestaurantAPI.Models
         public Foods Food { get; set; }
         public int? Quantity { get; set; }
         public long? PaymentAmount { get; set; }
-        public int? Flag { get; set; }
     }
 }

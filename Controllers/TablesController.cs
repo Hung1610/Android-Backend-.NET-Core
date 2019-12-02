@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RestaurantAPI.Dtos;
 using RestaurantAPI.Models;
 
 namespace RestaurantAPI.Controllers
@@ -21,29 +22,33 @@ namespace RestaurantAPI.Controllers
         }
 
 
-        [HttpPost("{id}/[action]")]
-        public async Task<ActionResult<Bills>> UpdateOrders(long id, List<Orders> orders)
+        [HttpPost("{tableId}/[action]")]
+        public async Task<ActionResult<Bills>> UpdateOrders(long tableId, List<OrderDto> orders)
         {
-            if (!TablesExists(id))
+            if (!TablesExists(tableId))
             {
                 return NotFound();
             }
 
-            var bill = await _context.Bills.Where(b => b.TableId == id && (b.Flag == 0 || b.Flag == null)).FirstOrDefaultAsync();
+            var bill = await _context.Bills.Where(b => b.TableId == tableId && (b.Flag == 0 || b.Flag == null)).FirstOrDefaultAsync();
             if (bill == null)
             {
                 return NotFound();
             }
 
-            foreach (Orders order in orders)
+            foreach (OrderDto orderDto in orders)
             {
-                order.BillId = bill.Id;
-                if (_context.Entry(order).State == EntityState.Detached)
+                var order = new Orders()
                 {
-                    await _context.Orders.AddAsync(order);
-                }
-                else
+                    BillId = bill.Id,
+                    FoodId = orderDto.FoodId,
+                    Quantity = orderDto.Quantity,
+                    PaymentAmount = orderDto.Quantity * ((long)await _context.Foods.Where(f => f.Id == orderDto.FoodId).Select(f=> f.Price).FirstOrDefaultAsync())
+                };
+                if (await _context.Orders.AnyAsync(o=> o.BillId == order.BillId && o.FoodId == order.FoodId))
                     _context.Entry(order).State = EntityState.Modified;
+                else
+                    await _context.Orders.AddAsync(order);
             }
             await _context.SaveChangesAsync();
 
@@ -68,7 +73,7 @@ namespace RestaurantAPI.Controllers
             bill.Flag = 1;
             _context.Entry(bill).State = EntityState.Modified;
             table.Flag = 0;
-            _context.Entry(bill).State = EntityState.Modified;
+            _context.Entry(table).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return bill;

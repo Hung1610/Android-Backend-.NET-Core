@@ -68,8 +68,6 @@ namespace RestaurantAPI.Migrations
 
                     b.Property<long>("FoodId");
 
-                    b.Property<int?>("Flag");
-
                     b.Property<long?>("PaymentAmount");
 
                     b.Property<int?>("Quantity");
