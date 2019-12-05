@@ -27,6 +27,23 @@ namespace RestaurantAPI.Controllers
             return await _context.Orders.ToListAsync();
         }
 
+        // GET: api/Orders
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Orders>>> GetOrdersByBillId(long billId)
+        {
+            return await _context.Orders.Where(o=> o.BillId == billId).ToListAsync();
+        }
+
+        // GET: api/Orders
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Orders>>> GetOrdersByTableId(long tableId)
+        {
+            var bill = await _context.Bills.Where(b => b.TableId == tableId).FirstOrDefaultAsync();
+            if (bill == null)
+                return NotFound();
+            return await _context.Orders.Where(o => o.BillId == bill.Id).ToListAsync();
+        }
+
         // GET: api/Orders/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Orders>> GetOrders(int id)
