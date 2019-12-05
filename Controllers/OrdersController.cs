@@ -31,6 +31,9 @@ namespace RestaurantAPI.Controllers
         [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<Orders>>> GetOrdersByBillId(long billId)
         {
+            var bill = await _context.Bills.Where(b => b.Id == billId && b.Flag == 0).FirstOrDefaultAsync();
+            if (bill == null)
+                return NotFound();
             return await _context.Orders.Where(o=> o.BillId == billId).ToListAsync();
         }
 
@@ -38,7 +41,7 @@ namespace RestaurantAPI.Controllers
         [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<Orders>>> GetOrdersByTableId(long tableId)
         {
-            var bill = await _context.Bills.Where(b => b.TableId == tableId).FirstOrDefaultAsync();
+            var bill = await _context.Bills.Where(b => b.TableId == tableId && b.Flag == 0).FirstOrDefaultAsync();
             if (bill == null)
                 return NotFound();
             return await _context.Orders.Where(o => o.BillId == bill.Id).ToListAsync();
