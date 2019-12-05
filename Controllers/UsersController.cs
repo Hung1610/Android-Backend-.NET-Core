@@ -27,6 +27,20 @@ namespace RestaurantAPI.Controllers
             return await _context.Users.ToListAsync();
         }
 
+        // GET: api/Users/Login
+        [HttpGet("[action]")]
+        public async Task<ActionResult<Users>> Login(string username, string password)
+        {
+            var user = await _context.Users.Where(u=> u.Username == username && u.Password == password).FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Users>> GetUsers(long id)
